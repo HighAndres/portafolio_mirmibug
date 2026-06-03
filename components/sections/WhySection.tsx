@@ -75,7 +75,7 @@ export default function WhySection() {
             </p>
             <div className="pt-3 border-t border-green/10">
               <p className="font-mono text-xs text-green/50 uppercase tracking-wider mb-1.5">
-                bajo el capó
+                detalle técnico
               </p>
               <p className="font-mono text-xs text-zinc-500 leading-relaxed">
                 {f.techDesc}
