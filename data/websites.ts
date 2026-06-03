@@ -2,32 +2,27 @@ export interface Website {
   name: string
   client: string
   url: string
-  screenshot?: string   // ruta relativa a /public, ej: '/screenshots/franslux.jpg'
+  description: string
+  screenshot?: string
   tech: string[]
   year: number
 }
 
-// Reemplaza estos placeholders con los sitios reales
 export const websites: Website[] = [
   {
     name: 'Sitio Corporativo',
-    client: 'Cliente A',
-    url: 'https://ejemplo.com',
-    tech: ['Next.js', 'Tailwind'],
+    client: 'e-Security',
+    url: 'https://e-security.com.mx/',
+    description: 'Sitio web para empresa de seguridad privada especializada en protección armada, escoltas y vigilancia tecnológica.',
+    tech: ['HTML5', 'CSS3', 'JavaScript'],
     year: 2024,
   },
   {
-    name: 'Landing de Producto',
-    client: 'Cliente B',
-    url: 'https://ejemplo2.com',
-    tech: ['WordPress', 'Elementor'],
+    name: 'Sitio Corporativo',
+    client: 'Nalla Hunting',
+    url: 'https://www.nallahunting.com/',
+    description: 'Sitio web para boutique de headhunting y reclutamiento ejecutivo especializado.',
+    tech: ['HTML5', 'CSS3', 'JavaScript'],
     year: 2024,
-  },
-  {
-    name: 'E-commerce',
-    client: 'Cliente C',
-    url: 'https://ejemplo3.com',
-    tech: ['Shopify', 'Liquid'],
-    year: 2023,
   },
 ]

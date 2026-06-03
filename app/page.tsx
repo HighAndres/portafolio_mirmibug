@@ -4,7 +4,9 @@ import HeroSection from '@/components/sections/HeroSection'
 import ProjectsSection from '@/components/sections/ProjectsSection'
 import WebsitesSection from '@/components/sections/WebsitesSection'
 import WhySection from '@/components/sections/WhySection'
+import SecuritySection from '@/components/sections/SecuritySection'
 import AgentSection from '@/components/sections/AgentSection'
+import BotArchitectureSection from '@/components/sections/BotArchitectureSection'
 import StackSection from '@/components/sections/StackSection'
 import ContactSection from '@/components/sections/ContactSection'
 
@@ -21,9 +23,13 @@ export default function Home() {
         <div className="border-t border-green/5" />
         <WhySection />
         <div className="border-t border-green/5" />
+        <SecuritySection />
+        <div className="border-t border-green/5" />
         <StackSection />
         <div className="border-t border-green/5" />
         <AgentSection />
+        <div className="border-t border-green/5" />
+        <BotArchitectureSection />
         <div className="border-t border-green/5" />
         <ContactSection />
       </main>
