@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import GreenDot from '@/components/ui/GreenDot'
 
 const chatMessages = [
@@ -116,12 +115,14 @@ export default function AgentSection() {
           </div>
 
           {/* CTA */}
-          <Link
-            href="/agent"
+          <a
+            href="https://mirmibug.com"
+            target="_blank"
+            rel="noopener noreferrer"
             className="block text-center font-mono text-sm px-5 py-3.5 rounded-lg border border-green bg-green/10 text-green hover:bg-green/20 transition-colors"
           >
-            Probar Mirmibot →
-          </Link>
+            Probar Mirmibot ↗
+          </a>
         </div>
       </div>
 

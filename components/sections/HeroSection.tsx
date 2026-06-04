@@ -35,7 +35,9 @@ export default function HeroSection() {
           ver proyectos →
         </a>
         <a
-          href="#agente"
+          href="https://mirmibug.com"
+          target="_blank"
+          rel="noopener noreferrer"
           className="font-mono text-sm px-5 py-2.5 rounded border border-green/25 text-zinc-400 hover:border-green/50 hover:text-white transition-colors"
         >
           hablar con Mirmibot

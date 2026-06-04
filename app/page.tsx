@@ -7,6 +7,7 @@ import WhySection from '@/components/sections/WhySection'
 import SecuritySection from '@/components/sections/SecuritySection'
 import AgentSection from '@/components/sections/AgentSection'
 import BotArchitectureSection from '@/components/sections/BotArchitectureSection'
+import InfraSection from '@/components/sections/InfraSection'
 import StackSection from '@/components/sections/StackSection'
 import ContactSection from '@/components/sections/ContactSection'
 
@@ -24,6 +25,8 @@ export default function Home() {
         <WhySection />
         <div className="border-t border-green/5" />
         <SecuritySection />
+        <div className="border-t border-green/5" />
+        <InfraSection />
         <div className="border-t border-green/5" />
         <StackSection />
         <div className="border-t border-green/5" />

@@ -64,12 +64,12 @@ export default function AgentPage() {
             </div>
 
             <a
-              href="https://wa.me/525549644749?text=Hola%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20Mirmibot"
+              href="https://mirmibug.com"
               target="_blank"
               rel="noopener noreferrer"
               className="block text-center font-mono text-sm px-5 py-4 rounded-lg border border-green bg-green/10 text-green hover:bg-green/20 transition-colors"
             >
-              Solicitar demo de Mirmibot →
+              Probar Mirmibot en vivo ↗
             </a>
           </div>
         </div>

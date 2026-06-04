@@ -9,6 +9,7 @@ const links = [
   { href: '/#sitios',    label: 'sitios' },
   { href: '/#por-que',   label: 'por qué' },
   { href: '/#seguridad', label: 'seguridad' },
+  { href: '/#infraestructura', label: 'infra' },
   { href: '/#stack',     label: 'stack' },
   { href: '/#agente',    label: 'agente' },
   { href: '/#contacto',  label: 'contacto' },
