@@ -23,8 +23,8 @@ const contacts = [
   {
     icon: '📧',
     title: 'Email',
-    desc: 'hola@mirmibug.com',
-    href: 'mailto:hola@mirmibug.com',
+    desc: 'contacto@mirmibug.com',
+    href: 'mailto:contacto@mirmibug.com',
     label: 'Escribir →',
   },
 ]

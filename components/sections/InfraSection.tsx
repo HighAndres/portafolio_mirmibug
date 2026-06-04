@@ -22,7 +22,7 @@ const devTools = [
   { category: 'Proxy & SSL', items: ['Nginx', 'Let\'s Encrypt', 'Certbot'] },
   { category: 'Procesos', items: ['PM2', 'Systemd', 'Health checks'] },
   { category: 'Base de datos', items: ['PostgreSQL', 'Backups cifrados', 'Migraciones'] },
-  { category: 'CI/CD', items: ['Git', 'GitHub', 'Build pipelines'] },
+  { category: 'CI/CD', items: ['Git', 'Repositorios privados', 'Build pipelines'] },
   { category: 'Monitoreo', items: ['Uptime checks', 'Alertas', 'Logs centralizados'] },
 ]
 
