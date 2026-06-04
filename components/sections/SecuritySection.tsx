@@ -4,42 +4,42 @@ const practices = [
   {
     icon: '🔐',
     title: 'Cifrado en tránsito y reposo',
-    desc: 'Toda la comunicación viaja por HTTPS/TLS 1.3. Los datos sensibles se almacenan cifrados con AES-256 en bases de datos protegidas.',
+    desc: 'Toda la comunicación viaja cifrada. Los datos sensibles se almacenan con cifrado de grado militar en bases de datos protegidas.',
   },
   {
     icon: '🛡️',
     title: 'Autenticación robusta',
-    desc: 'JWT con tokens de corta duración + refresh tokens rotados. Contraseñas hasheadas con bcrypt (cost factor 12). Soporte para 2FA.',
+    desc: 'Tokens de corta duración con rotación automática. Contraseñas hasheadas con algoritmos seguros. Soporte para autenticación multifactor.',
   },
   {
     icon: '🔍',
     title: 'Principio de mínimo privilegio',
-    desc: 'Cada usuario, servicio y API key tiene solo los permisos estrictamente necesarios. Roles granulares por sistema.',
+    desc: 'Cada usuario, servicio y credencial tiene solo los permisos estrictamente necesarios. Roles granulares por sistema.',
   },
   {
     icon: '📋',
     title: 'Auditoría y trazabilidad',
-    desc: 'Logs inmutables de toda acción crítica: quién, qué, cuándo y desde dónde. Retención configurable por cliente.',
+    desc: 'Registro inmutable de toda acción crítica: quién, qué, cuándo y desde dónde. Retención configurable por cliente.',
   },
   {
     icon: '🗄️',
     title: 'Respaldos automáticos',
-    desc: 'Backups diarios cifrados con estrategia 3-2-1. Pruebas de restauración periódicas. RPO < 24h, RTO < 1h.',
+    desc: 'Backups diarios cifrados con estrategia de redundancia. Pruebas de restauración periódicas. Recuperación en menos de una hora.',
   },
   {
     icon: '🧱',
     title: 'Infraestructura hardened',
-    desc: 'Firewall UFW, fail2ban, SSH por llave (sin password), puertos no estándar, actualizaciones automáticas de seguridad.',
+    desc: 'Firewall activo, protección contra fuerza bruta, acceso restringido por llave, puertos no estándar y actualizaciones automáticas.',
   },
 ]
 
 const certifications = [
-  { label: 'HTTPS/TLS 1.3', status: 'active' },
-  { label: 'Backups cifrados', status: 'active' },
-  { label: 'Firewall activo', status: 'active' },
-  { label: 'Logs de auditoría', status: 'active' },
-  { label: 'SSH key-only', status: 'active' },
-  { label: 'Headers de seguridad', status: 'active' },
+  { label: 'Cifrado TLS' },
+  { label: 'Backups cifrados' },
+  { label: 'Firewall activo' },
+  { label: 'Logs de auditoría' },
+  { label: 'Acceso por llave' },
+  { label: 'Headers hardened' },
 ]
 
 export default function SecuritySection() {

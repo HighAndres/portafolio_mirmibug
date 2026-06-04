@@ -73,14 +73,6 @@ export default async function ProjectPage({ params }: Props) {
         </div>
 
         <div className="flex gap-4">
-          <a
-            href={project.repo}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-mono text-sm px-4 py-2 rounded border border-green/30 text-green hover:bg-green/10 transition-colors"
-          >
-            Ver en GitHub →
-          </a>
           {project.demo && (
             <a
               href={project.demo}

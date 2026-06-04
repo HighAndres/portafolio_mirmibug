@@ -4,8 +4,10 @@ import { useEffect, useState } from 'react'
 
 export default function Footer() {
   const [time, setTime] = useState('')
+  const [year, setYear] = useState<number | null>(null)
 
   useEffect(() => {
+    setYear(new Date().getFullYear())
     const fmt = () =>
       new Date().toLocaleTimeString('es-MX', {
         hour: '2-digit',
@@ -22,7 +24,7 @@ export default function Footer() {
     <footer className="border-t border-green/10 mt-24">
       <div className="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
         <p className="font-mono text-xs text-zinc-500">
-          © {new Date().getFullYear()} Mirmibug IT Solutions — CDMX, México
+          {year ? `© ${year}` : '©'} Mirmibug IT Solutions — CDMX, México
         </p>
         <p className="font-mono text-xs text-green/60">
           {time ? `CDMX ${time}` : ''}

@@ -1,47 +1,37 @@
-'use client'
-
-import { useEffect, useRef, useState } from 'react'
 import { stack } from '@/data/stack'
 
 export default function StackSection() {
-  const ref = useRef<HTMLElement>(null)
-  const [visible, setVisible] = useState(false)
-
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setVisible(true) },
-      { threshold: 0.2 }
-    )
-    obs.observe(el)
-    return () => obs.disconnect()
-  }, [])
-
   return (
-    <section id="stack" ref={ref} className="max-w-6xl mx-auto px-6 py-20">
+    <section id="stack" className="max-w-6xl mx-auto px-6 py-20">
       <p className="font-mono text-xs text-green/60 mb-2 uppercase tracking-widest">
         // stack técnico
       </p>
-      <h2 className="font-mono text-3xl font-bold text-white mb-10">
-        Herramientas que usamos
+      <h2 className="font-mono text-3xl font-bold text-white mb-3">
+        Herramientas que dominamos
       </h2>
+      <p className="text-zinc-400 text-sm mb-10 max-w-lg">
+        Seleccionamos la tecnología según el problema, no por tendencia.
+        Todo lo que usamos está probado en producción.
+      </p>
 
-      <div className="grid sm:grid-cols-2 gap-5 max-w-3xl">
-        {stack.map((item) => (
-          <div key={item.name}>
-            <div className="flex justify-between mb-1.5">
-              <span className="font-mono text-sm text-white">{item.name}</span>
-              <span className="font-mono text-xs text-green/70">{item.level}%</span>
-            </div>
-            <div className="h-1.5 rounded-full bg-green/10 overflow-hidden">
-              <div
-                className="h-full rounded-full bg-green transition-none"
-                style={{
-                  width: visible ? `${item.level}%` : '0%',
-                  transition: visible ? 'width 1s ease-out' : 'none',
-                }}
-              />
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {stack.map((group) => (
+          <div
+            key={group.category}
+            className="p-5 rounded-lg border border-green/10 bg-surface hover:border-green/25 transition-all duration-300"
+          >
+            <h3 className="font-mono text-sm font-bold text-white mb-3">
+              {group.category}
+            </h3>
+            <div className="flex flex-wrap gap-1.5">
+              {group.items.map((item) => (
+                <span
+                  key={item}
+                  className="font-mono text-xs px-2 py-0.5 rounded border border-green/20 text-green/70 bg-green/5"
+                >
+                  {item}
+                </span>
+              ))}
             </div>
           </div>
         ))}

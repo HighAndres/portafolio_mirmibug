@@ -19,6 +19,22 @@ export const metadata: Metadata = {
   description:
     'Soluciones tecnológicas a medida: desarrollo de software, automatización e inteligencia artificial para empresas en Ciudad de México.',
   keywords: ['MSP', 'IT', 'CDMX', 'desarrollo web', 'automatización', 'soporte técnico'],
+  metadataBase: new URL('https://dev.mirmiapps.com'),
+  openGraph: {
+    title: 'Mirmibug IT Solutions — MSP en CDMX',
+    description:
+      'Desarrollo de software, automatización e inteligencia artificial para empresas en Ciudad de México.',
+    url: 'https://dev.mirmiapps.com',
+    siteName: 'Mirmibug IT Solutions',
+    locale: 'es_MX',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Mirmibug IT Solutions',
+    description:
+      'Soluciones IT a medida: software, automatización e IA para empresas en CDMX.',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

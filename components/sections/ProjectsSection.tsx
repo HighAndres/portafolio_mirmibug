@@ -59,14 +59,6 @@ export default function ProjectsSection() {
                       abrir sistema ↗
                     </a>
                   )}
-                  <a
-                    href={p.repo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-mono text-xs text-zinc-500 hover:text-zinc-200 transition-colors"
-                  >
-                    GitHub →
-                  </a>
                   <Link
                     href={`/projects/${p.slug}`}
                     className="font-mono text-xs text-zinc-500 hover:text-zinc-200 transition-colors"

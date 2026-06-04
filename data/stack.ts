@@ -1,12 +1,31 @@
-import type { StackItem } from '@/lib/types'
+export interface StackCategory {
+  category: string
+  items: string[]
+}
 
-export const stack: StackItem[] = [
-  { name: 'TypeScript',    level: 85 },
-  { name: 'Node.js',       level: 90 },
-  { name: 'React / Next.js', level: 78 },
-  { name: 'PostgreSQL',    level: 82 },
-  { name: 'Docker',        level: 75 },
-  { name: 'n8n',           level: 88 },
-  { name: 'Nginx / VPS',   level: 80 },
-  { name: 'Groq / LLM',    level: 72 },
+export const stack: StackCategory[] = [
+  {
+    category: 'Backend',
+    items: ['Node.js', 'NestJS', 'Express', 'REST APIs', 'WebSockets'],
+  },
+  {
+    category: 'Frontend',
+    items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS'],
+  },
+  {
+    category: 'Datos',
+    items: ['PostgreSQL', 'Prisma ORM', 'Redis', 'Backups automatizados'],
+  },
+  {
+    category: 'Infraestructura',
+    items: ['VPS Linux', 'Docker', 'Nginx', 'SSL/TLS', 'CI/CD'],
+  },
+  {
+    category: 'Automatización',
+    items: ['n8n', 'Webhooks', 'Cron jobs', 'APIs de terceros'],
+  },
+  {
+    category: 'Inteligencia artificial',
+    items: ['LLMs', 'Prompt engineering', 'Agentes conversacionales', 'RAG'],
+  },
 ]

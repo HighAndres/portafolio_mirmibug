@@ -8,7 +8,6 @@ export interface Website {
   year: number
   role: string
   highlights: string[]
-  securityScore: number
 }
 
 export const websites: Website[] = [
@@ -19,16 +18,15 @@ export const websites: Website[] = [
     description:
       'Empresa de seguridad privada especializada en protección armada, escoltas ejecutivos y vigilancia tecnológica. Presencia en CDMX y área metropolitana.',
     screenshot: '/e-security.png',
-    tech: ['HTML5', 'CSS3', 'JavaScript', 'SEO', 'SSL/TLS'],
+    tech: ['Responsive', 'SEO', 'SSL/TLS', 'Performance'],
     year: 2024,
     role: 'Desarrollo, despliegue y seguridad',
     highlights: [
-      'Certificado SSL configurado y renovación automática',
-      'Headers de seguridad (CSP, HSTS, X-Frame-Options)',
+      'Certificado SSL con renovación automática',
+      'Headers de seguridad hardened',
       'Optimización de carga < 2s en móvil',
       'Formulario de contacto con protección anti-spam',
     ],
-    securityScore: 95,
   },
   {
     name: 'Sitio Corporativo',
@@ -37,15 +35,14 @@ export const websites: Website[] = [
     description:
       'Boutique de headhunting y reclutamiento ejecutivo. Conectan talento de alto nivel con empresas que buscan líderes que transformen sus organizaciones.',
     screenshot: '/nalla.png',
-    tech: ['HTML5', 'CSS3', 'JavaScript', 'SEO', 'SSL/TLS'],
+    tech: ['Responsive', 'SEO', 'SSL/TLS', 'CDN'],
     year: 2024,
     role: 'Desarrollo, despliegue y seguridad',
     highlights: [
-      'Despliegue en servidor optimizado con CDN',
-      'Certificado SSL y headers de seguridad hardened',
-      'SEO on-page configurado (meta tags, sitemap, robots)',
-      'Diseño responsive validado en 5+ dispositivos',
+      'Despliegue optimizado con CDN',
+      'Certificado SSL y headers hardened',
+      'SEO on-page (meta tags, sitemap, robots)',
+      'Validado en 5+ dispositivos',
     ],
-    securityScore: 93,
   },
 ]

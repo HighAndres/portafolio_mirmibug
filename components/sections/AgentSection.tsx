@@ -63,7 +63,7 @@ export default function AgentSection() {
                 <span className="font-mono text-xs text-zinc-600">Escribe tu mensaje...</span>
               </div>
               <a
-                href="https://brain.mirmibug.com"
+                href="https://wa.me/525549644749?text=Hola%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20sus%20servicios"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="shrink-0 h-9 px-4 rounded-md bg-green text-black font-mono text-xs font-bold flex items-center gap-1.5 hover:bg-green/90 transition-colors"
@@ -96,13 +96,13 @@ export default function AgentSection() {
             </p>
             <div className="flex items-center gap-2 mb-2">
               <div className="w-2 h-2 rounded-full bg-green animate-pulse-dot" />
-              <span className="font-mono text-sm text-white">LLaMA 3.3 70B</span>
+              <span className="font-mono text-sm text-white">LLM propio</span>
             </div>
-            <p className="font-mono text-xs text-zinc-600">vía Groq · latencia ~200ms</p>
+            <p className="font-mono text-xs text-zinc-600">Infraestructura propia · latencia ultra baja</p>
           </div>
 
           <a
-            href="https://brain.mirmibug.com"
+            href="https://wa.me/525549644749?text=Hola%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20sus%20servicios"
             target="_blank"
             rel="noopener noreferrer"
             className="block text-center font-mono text-sm px-5 py-3 rounded-lg border border-green bg-green/10 text-green hover:bg-green/20 transition-colors"

@@ -1,96 +1,134 @@
-const steps = [
+import GreenDot from '@/components/ui/GreenDot'
+
+const pipeline = [
   {
     number: '01',
-    title: 'El usuario envía un mensaje',
-    desc: 'Desde el widget web, el cliente escribe su pregunta en lenguaje natural. La interfaz envía el texto al backend vía API REST segura.',
-    tech: 'Frontend → POST /api/chat → Express.js',
+    title: 'Ingesta del mensaje',
+    desc: 'El usuario envía su consulta desde el widget. La petición viaja cifrada por TLS hasta nuestra API gateway con rate limiting y validación de payload.',
+    tags: ['API Gateway', 'TLS 1.3', 'Rate Limiting'],
   },
   {
     number: '02',
-    title: 'Contexto y memoria',
-    desc: 'El servidor recupera el historial de la conversación para mantener coherencia. Cada sesión tiene su propio contexto independiente.',
-    tech: 'Session store en memoria → historial de mensajes por session ID',
+    title: 'Enriquecimiento de contexto',
+    desc: 'El motor recupera el historial conversacional y lo combina con el knowledge base del cliente usando embeddings vectoriales para máxima relevancia.',
+    tags: ['Context Window', 'Embeddings', 'RAG Pipeline'],
   },
   {
     number: '03',
-    title: 'Prompt engineering',
-    desc: 'El mensaje se enriquece con el system prompt de Mirmibug: personalidad, servicios, precios, reglas de negocio y formato de respuesta.',
-    tech: 'System prompt + contexto de negocio + historial → prompt final',
+    title: 'Inferencia con LLM',
+    desc: 'El prompt optimizado se envía a un modelo de lenguaje de última generación con inferencia acelerada por hardware especializado. Latencia sub-300ms.',
+    tags: ['LLM', 'Hardware-Accelerated', 'Low Latency'],
   },
   {
     number: '04',
-    title: 'Inferencia con LLM',
-    desc: 'El prompt se envía a LLaMA 3.3 70B a través de Groq, que procesa la solicitud con latencia ultra baja (~200ms) gracias a sus chips LPU.',
-    tech: 'Groq SDK → LLaMA 3.3 70B Versatile → streaming response',
-  },
-  {
-    number: '05',
-    title: 'Respuesta al cliente',
-    desc: 'La respuesta del modelo se transmite en tiempo real al navegador. El bot puede responder preguntas, cotizar servicios o agendar llamadas.',
-    tech: 'Server-Sent Events → renderizado progresivo en el frontend',
+    title: 'Streaming de respuesta',
+    desc: 'La respuesta se transmite token por token al frontend vía Server-Sent Events, permitiendo que el usuario vea la respuesta generarse en tiempo real.',
+    tags: ['SSE', 'Streaming', 'Real-time'],
   },
 ]
 
-const specs = [
-  { label: 'Modelo', value: 'LLaMA 3.3 70B' },
-  { label: 'Proveedor', value: 'Groq (LPU)' },
-  { label: 'Latencia', value: '~200ms' },
-  { label: 'Backend', value: 'Node.js + Express' },
-  { label: 'Deploy', value: 'Docker + Nginx' },
+const capabilities = [
+  {
+    title: 'Comprensión de lenguaje natural',
+    desc: 'Entiende preguntas complejas en español, interpreta intención y contexto sin comandos rígidos.',
+  },
+  {
+    title: 'Memoria conversacional',
+    desc: 'Cada sesión mantiene contexto propio. El agente recuerda lo que se habló para respuestas coherentes.',
+  },
+  {
+    title: 'Personalización por negocio',
+    desc: 'Knowledge base específico por cliente: servicios, precios, políticas y tono de comunicación.',
+  },
+  {
+    title: 'Infraestructura propia',
+    desc: 'Desplegado en nuestros servidores con SSL, monitoreo continuo y control total sobre los datos.',
+  },
+]
+
+const metrics = [
   { label: 'Disponibilidad', value: '24/7' },
+  { label: 'Latencia p95', value: '< 300ms' },
+  { label: 'Infraestructura', value: 'Propia' },
+  { label: 'Protocolo', value: 'TLS 1.3' },
 ]
 
 export default function BotArchitectureSection() {
   return (
     <section id="como-funciona" className="max-w-6xl mx-auto px-6 py-20">
       <p className="font-mono text-xs text-green/60 mb-2 uppercase tracking-widest">
-        // arquitectura del bot
+        // arquitectura del agente
       </p>
       <h2 className="font-mono text-3xl font-bold text-white mb-3">
         ¿Cómo funciona Mirmibot?
       </h2>
       <p className="text-zinc-400 text-sm mb-10 max-w-lg">
-        Un agente conversacional construido con inteligencia artificial de última
-        generación, desplegado en nuestra propia infraestructura.
+        Un agente conversacional construido sobre modelos de lenguaje de última
+        generación, con inferencia acelerada por hardware y desplegado en
+        infraestructura propia.
       </p>
 
-      <div className="grid md:grid-cols-5 gap-6 mb-10">
-        {/* Pipeline steps */}
-        <div className="md:col-span-3 space-y-1">
-          {steps.map((step, i) => (
-            <div key={step.number} className="relative flex gap-4 group">
-              {/* Vertical connector line */}
-              <div className="flex flex-col items-center">
-                <div className="w-8 h-8 rounded-full border border-green/40 bg-green/10 flex items-center justify-center shrink-0">
+      {/* Pipeline */}
+      <div className="grid md:grid-cols-4 gap-4 mb-12">
+        {pipeline.map((step, i) => (
+          <div key={step.number} className="relative">
+            {/* Arrow connector (desktop) */}
+            {i < pipeline.length - 1 && (
+              <div className="hidden md:block absolute top-8 -right-2.5 text-green/30 text-lg z-10">
+                →
+              </div>
+            )}
+            <div className="h-full p-5 rounded-lg border border-green/15 bg-surface hover:border-green/30 transition-all duration-300">
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-7 h-7 rounded-full border border-green/40 bg-green/10 flex items-center justify-center">
                   <span className="font-mono text-xs text-green font-bold">{step.number}</span>
                 </div>
-                {i < steps.length - 1 && (
-                  <div className="w-px flex-1 bg-green/15 my-1" />
-                )}
+                <h3 className="font-mono text-xs font-bold text-white">{step.title}</h3>
               </div>
+              <p className="text-zinc-400 text-xs leading-relaxed mb-3">{step.desc}</p>
+              <div className="flex flex-wrap gap-1">
+                {step.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="font-mono text-xs px-1.5 py-0.5 rounded bg-green/5 border border-green/15 text-green/60"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
 
-              <div className="pb-6 flex-1">
-                <h3 className="font-mono text-sm font-bold text-white mb-1.5">{step.title}</h3>
-                <p className="text-zinc-400 text-xs leading-relaxed mb-2">{step.desc}</p>
-                <div className="inline-block px-2.5 py-1 rounded bg-black/40 border border-green/10">
-                  <code className="font-mono text-xs text-green/60">{step.tech}</code>
-                </div>
-              </div>
+      <div className="grid md:grid-cols-5 gap-6">
+        {/* Capabilities */}
+        <div className="md:col-span-3 grid sm:grid-cols-2 gap-4">
+          {capabilities.map((cap) => (
+            <div
+              key={cap.title}
+              className="p-4 rounded-lg border border-green/10 bg-surface"
+            >
+              <h3 className="font-mono text-sm font-bold text-white mb-1.5">{cap.title}</h3>
+              <p className="text-zinc-400 text-xs leading-relaxed">{cap.desc}</p>
             </div>
           ))}
         </div>
 
-        {/* Specs sidebar */}
+        {/* Sidebar */}
         <div className="md:col-span-2 flex flex-col gap-4">
           <div className="border border-green/15 rounded-lg bg-surface p-5 flex-1">
-            <p className="font-mono text-xs text-zinc-500 uppercase tracking-wider mb-4">
-              Especificaciones
-            </p>
+            <div className="flex items-center gap-2 mb-4">
+              <GreenDot />
+              <p className="font-mono text-xs text-zinc-500 uppercase tracking-wider">
+                Métricas de producción
+              </p>
+            </div>
             <div className="space-y-3">
-              {specs.map((s) => (
-                <div key={s.label} className="flex justify-between items-center">
-                  <span className="font-mono text-xs text-zinc-500">{s.label}</span>
-                  <span className="font-mono text-xs text-white">{s.value}</span>
+              {metrics.map((m) => (
+                <div key={m.label} className="flex justify-between items-center">
+                  <span className="font-mono text-xs text-zinc-500">{m.label}</span>
+                  <span className="font-mono text-xs text-white">{m.value}</span>
                 </div>
               ))}
             </div>
@@ -98,25 +136,16 @@ export default function BotArchitectureSection() {
 
           <div className="border border-green/15 rounded-lg bg-surface p-5">
             <p className="font-mono text-xs text-zinc-500 uppercase tracking-wider mb-3">
-              ¿Por qué Groq?
+              Casos de uso
             </p>
-            <p className="text-zinc-400 text-xs leading-relaxed">
-              Groq utiliza chips LPU (Language Processing Unit) diseñados
-              específicamente para inferencia de LLMs. Esto permite respuestas
-              hasta 10x más rápidas que GPUs tradicionales, con costos
-              significativamente menores.
-            </p>
-          </div>
-
-          <div className="border border-green/15 rounded-lg bg-surface p-5">
-            <p className="font-mono text-xs text-zinc-500 uppercase tracking-wider mb-3">
-              Personalización
-            </p>
-            <p className="text-zinc-400 text-xs leading-relaxed">
-              Mirmibot está entrenado con el contexto específico de Mirmibug:
-              servicios, precios, casos de uso y tono de comunicación. Cada
-              cliente puede tener su propio agente personalizado.
-            </p>
+            <ul className="space-y-2">
+              {['Atención al cliente 24/7', 'Calificación de leads', 'Cotización automática', 'Agendado de citas'].map((u) => (
+                <li key={u} className="flex gap-2 text-xs text-zinc-400">
+                  <span className="text-green shrink-0">▸</span>
+                  {u}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>

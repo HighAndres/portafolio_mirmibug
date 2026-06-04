@@ -2,8 +2,8 @@ import GreenDot from '@/components/ui/GreenDot'
 
 const stats = [
   { value: '4+', label: 'sistemas en producción' },
-  { value: 'MSP', label: 'Ciudad de México' },
-  { value: '∞', label: 'litros de café' },
+  { value: '99.9%', label: 'uptime promedio' },
+  { value: '24/7', label: 'monitoreo activo' },
 ]
 
 export default function HeroSection() {

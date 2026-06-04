@@ -5,7 +5,7 @@ export interface Project {
   shortDesc: string
   longDesc: string
   stack: string[]
-  repo: string
+  repo?: string
   demo?: string
   screenshot?: string
   terminal: TerminalLine[]
@@ -15,9 +15,4 @@ export interface Project {
 export interface TerminalLine {
   type: 'command' | 'output' | 'success' | 'dim'
   text: string
-}
-
-export interface StackItem {
-  name: string
-  level: number
 }

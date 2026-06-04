@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { websites } from '@/data/websites'
 import GreenDot from '@/components/ui/GreenDot'
 
@@ -51,11 +52,12 @@ export default function WebsitesSection() {
               rel="noopener noreferrer"
               className="block relative overflow-hidden"
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src={site.screenshot}
                 alt={`${site.client} — ${site.name}`}
-                className="w-full h-48 object-cover object-top opacity-70 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-500"
+                width={600}
+                height={192}
+                className="w-full h-auto max-h-48 object-cover object-top opacity-70 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent" />
               <span className="absolute bottom-3 right-3 font-mono text-xs text-green/60 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -105,24 +107,6 @@ export default function WebsitesSection() {
                     </li>
                   ))}
                 </ul>
-              </div>
-
-              {/* Security score bar */}
-              <div className="mb-4">
-                <div className="flex items-center justify-between mb-1.5">
-                  <span className="font-mono text-xs text-zinc-500">
-                    Security score
-                  </span>
-                  <span className="font-mono text-xs text-green font-bold">
-                    {site.securityScore}/100
-                  </span>
-                </div>
-                <div className="h-1.5 rounded-full bg-zinc-800 overflow-hidden">
-                  <div
-                    className="h-full rounded-full bg-green/70 animate-bar"
-                    style={{ '--bar-level': `${site.securityScore}%` } as React.CSSProperties}
-                  />
-                </div>
               </div>
 
               {/* Tech tags */}
