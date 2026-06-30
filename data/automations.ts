@@ -13,7 +13,7 @@ export const automationFlows: AutomationFlow[] = [
       { icon: '📋', label: 'Log', detail: 'Registra en Sheets' },
     ],
     result: 'Correos clasificados y enrutados automáticamente — 0 intervención manual',
-    tags: ['n8n', 'OpenAI', 'Gmail', 'Google Sheets'],
+    tags: ['n8n', 'OpenAI', 'OpenClaw', 'Gmail', 'Google Sheets'],
   },
   {
     id: 'respuesta-automatica',
@@ -27,7 +27,7 @@ export const automationFlows: AutomationFlow[] = [
       { icon: '📤', label: 'Envío', detail: 'WhatsApp o email' },
     ],
     result: 'Respuestas personalizadas en <30s con historial del cliente',
-    tags: ['n8n', 'Groq', 'PostgreSQL', 'WhatsApp'],
+    tags: ['n8n', 'Groq', 'OpenClaw', 'PostgreSQL', 'WhatsApp'],
   },
   {
     id: 'analisis-reportes',
@@ -41,7 +41,7 @@ export const automationFlows: AutomationFlow[] = [
       { icon: '✉️', label: 'Email', detail: 'Envía al equipo' },
     ],
     result: 'Reportes semanales con insights de IA — sin mover un dedo',
-    tags: ['n8n', 'OpenAI', 'PostgreSQL', 'SMTP'],
+    tags: ['n8n', 'OpenAI', 'OpenClaw', 'PostgreSQL', 'SMTP'],
   },
   {
     id: 'onboarding-clientes',
@@ -55,7 +55,7 @@ export const automationFlows: AutomationFlow[] = [
       { icon: '💬', label: 'Slack', detail: 'Notifica al equipo' },
     ],
     result: 'Cliente con carpeta, correo de bienvenida y cita agendada en <1 minuto',
-    tags: ['n8n', 'OpenAI', 'Google Drive', 'Calendly', 'Slack'],
+    tags: ['n8n', 'OpenAI', 'OpenClaw', 'Google Drive', 'Calendly', 'Slack'],
   },
   {
     id: 'monitoreo-servidores',
@@ -69,7 +69,7 @@ export const automationFlows: AutomationFlow[] = [
       { icon: '📲', label: 'Alerta', detail: 'WhatsApp al admin' },
     ],
     result: 'Incidentes diagnosticados y resueltos antes de que el cliente lo note',
-    tags: ['n8n', 'Groq', 'SSH', 'WhatsApp', 'Uptime Kuma'],
+    tags: ['n8n', 'Groq', 'OpenClaw', 'SSH', 'WhatsApp', 'Uptime Kuma'],
   },
   {
     id: 'facturacion-automatica',
@@ -83,7 +83,21 @@ export const automationFlows: AutomationFlow[] = [
       { icon: '✅', label: 'Conciliación', detail: 'Marca como pagado' },
     ],
     result: 'Facturación, envío y seguimiento de cobranza sin intervención manual',
-    tags: ['n8n', 'API SAT', 'SMTP', 'PostgreSQL', 'WhatsApp'],
+    tags: ['n8n', 'OpenClaw', 'API SAT', 'SMTP', 'PostgreSQL', 'WhatsApp'],
+  },
+  {
+    id: 'reporte-360',
+    title: 'Reporte 360° mensual para cliente',
+    trigger: 'Cron mensual',
+    steps: [
+      { icon: '🖥️', label: 'Infra Audit', detail: 'SSH a servidores' },
+      { icon: '🔍', label: 'Scraping', detail: 'Mercado y competencia' },
+      { icon: '📈', label: 'Métricas', detail: 'Contenido y redes' },
+      { icon: '🧠', label: 'IA Summary', detail: 'Resumen ejecutivo' },
+      { icon: '📊', label: 'Excel 360', detail: 'Reporte consolidado' },
+    ],
+    result: 'Excel ejecutivo con infra + mercado + contenido — un solo entregable mensual',
+    tags: ['n8n', 'OpenAI', 'OpenClaw', 'SSH', 'Puppeteer', 'ExcelJS'],
   },
 ]
 
