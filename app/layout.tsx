@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Space_Mono } from 'next/font/google'
 import { DM_Sans } from 'next/font/google'
+import NetworkBackground from '@/components/ui/NetworkBackground'
 import './globals.css'
 
 const spaceMono = Space_Mono({
@@ -28,7 +29,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${spaceMono.variable} ${dmSans.variable} h-full`}
     >
       <body className="min-h-full flex flex-col bg-base text-white antialiased">
-        {children}
+        <NetworkBackground />
+        <div className="relative z-10 flex flex-col min-h-full">
+          {children}
+        </div>
       </body>
     </html>
   )
