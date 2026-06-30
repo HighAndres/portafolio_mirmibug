@@ -1,16 +1,41 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { automationFlows, automationServices } from '@/data/automations'
 import Tag from '@/components/ui/Tag'
 import GreenDot from '@/components/ui/GreenDot'
 
 export default function AutomationSection() {
   const [activeFlow, setActiveFlow] = useState(0)
+  const [animKey, setAnimKey] = useState(0)
+  const [visible, setVisible] = useState(false)
+  const sectionRef = useRef<HTMLElement>(null)
   const flow = automationFlows[activeFlow]
 
+  function switchFlow(i: number) {
+    setActiveFlow(i)
+    setAnimKey((k) => k + 1)
+  }
+
+  useEffect(() => {
+    const el = sectionRef.current
+    if (!el) return
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setVisible(true) },
+      { threshold: 0.1 }
+    )
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
+
   return (
-    <section id="automatizacion" className="max-w-6xl mx-auto px-6 py-20">
+    <section
+      ref={sectionRef}
+      id="automatizacion"
+      className={`max-w-6xl mx-auto px-6 py-20 transition-all duration-1000 ${
+        visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+      }`}
+    >
       <p className="font-mono text-xs text-green/60 mb-2 uppercase tracking-widest">
         // automatización
       </p>
@@ -28,10 +53,10 @@ export default function AutomationSection() {
         {automationFlows.map((f, i) => (
           <button
             key={f.id}
-            onClick={() => setActiveFlow(i)}
+            onClick={() => switchFlow(i)}
             className={`font-mono text-xs px-3 py-1.5 rounded border transition-all duration-300 ${
               i === activeFlow
-                ? 'border-green/40 bg-green/10 text-green'
+                ? 'border-green/40 bg-green/10 text-green shadow-[0_0_12px_rgba(56,216,78,0.15)]'
                 : 'border-green/10 text-zinc-500 hover:border-green/25 hover:text-zinc-300'
             }`}
           >
@@ -50,17 +75,21 @@ export default function AutomationSection() {
         </div>
 
         {/* Flow Diagram */}
-        <div className="p-6 min-h-[220px] flex items-center justify-center">
+        <div key={animKey} className="p-6 min-h-[220px] flex items-center justify-center">
           <div className="flex flex-col md:flex-row items-center gap-2 md:gap-0">
             {flow.steps.map((step, i) => (
-              <div key={i} className="flex flex-col md:flex-row items-center">
+              <div
+                key={i}
+                className="flex flex-col md:flex-row items-center animate-[fadeInUp_0.4s_ease-out_both]"
+                style={{ animationDelay: `${i * 120}ms` }}
+              >
                 {/* Node */}
-                <div className="flex flex-col items-center gap-1.5 min-w-[80px]">
-                  <div className="w-12 h-12 rounded-lg border border-green/20 bg-green/5 flex items-center justify-center text-lg">
+                <div className="group flex flex-col items-center gap-1.5 min-w-[80px]">
+                  <div className="w-12 h-12 rounded-lg border border-green/20 bg-green/5 flex items-center justify-center text-lg transition-all duration-300 group-hover:border-green/50 group-hover:bg-green/10 group-hover:shadow-[0_0_20px_rgba(56,216,78,0.2)] group-hover:scale-110">
                     {step.icon}
                   </div>
                   <span className="font-mono text-xs text-white text-center">{step.label}</span>
-                  <span className="font-mono text-[10px] text-zinc-600 text-center">{step.detail}</span>
+                  <span className="font-mono text-[10px] text-zinc-600 text-center group-hover:text-zinc-400 transition-colors">{step.detail}</span>
                 </div>
 
                 {/* Connector */}
@@ -68,13 +97,13 @@ export default function AutomationSection() {
                   <>
                     {/* Horizontal connector (desktop) */}
                     <div className="hidden md:flex items-center px-2 -mt-6">
-                      <div className="w-6 h-px bg-green/30" />
-                      <span className="text-green/50 text-xs">▸</span>
+                      <div className="w-6 h-px bg-green/30 animate-[pulseWidth_1.5s_ease-in-out_infinite]" style={{ animationDelay: `${i * 200}ms` }} />
+                      <span className="text-green/50 text-xs animate-[flowArrow_1.5s_ease-in-out_infinite]" style={{ animationDelay: `${i * 200}ms` }}>▸</span>
                     </div>
                     {/* Vertical connector (mobile) */}
                     <div className="md:hidden flex flex-col items-center py-1">
-                      <div className="w-px h-4 bg-green/30" />
-                      <span className="text-green/50 text-[10px]">▾</span>
+                      <div className="w-px h-4 bg-green/30 animate-[pulseHeight_1.5s_ease-in-out_infinite]" style={{ animationDelay: `${i * 200}ms` }} />
+                      <span className="text-green/50 text-[10px] animate-[flowArrow_1.5s_ease-in-out_infinite]" style={{ animationDelay: `${i * 200}ms` }}>▾</span>
                     </div>
                   </>
                 )}
@@ -84,13 +113,15 @@ export default function AutomationSection() {
         </div>
 
         {/* Result + Tags */}
-        <div className="px-4 pb-4 space-y-3">
+        <div key={`result-${animKey}`} className="px-4 pb-4 space-y-3 animate-[fadeIn_0.5s_ease-out_0.6s_both]">
           <div className="px-3 py-2 rounded bg-black/40 border border-green/10">
             <code className="font-mono text-xs text-green/70">→ {flow.result}</code>
           </div>
           <div className="flex flex-wrap gap-1.5">
-            {flow.tags.map((tag) => (
-              <Tag key={tag} label={tag} />
+            {flow.tags.map((tag, i) => (
+              <span key={tag} className="animate-[fadeInUp_0.3s_ease-out_both]" style={{ animationDelay: `${700 + i * 60}ms` }}>
+                <Tag label={tag} />
+              </span>
             ))}
           </div>
         </div>
@@ -98,12 +129,15 @@ export default function AutomationSection() {
 
       {/* Services Grid */}
       <div className="grid md:grid-cols-2 gap-4 mb-10">
-        {automationServices.map((s) => (
+        {automationServices.map((s, i) => (
           <div
             key={s.title}
-            className="p-5 rounded-lg border border-green/10 bg-surface hover:border-green/25 transition-all duration-300"
+            className={`group p-5 rounded-lg border border-green/10 bg-surface hover:border-green/25 hover:shadow-[0_0_30px_rgba(56,216,78,0.08)] transition-all duration-500 ${
+              visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+            }`}
+            style={{ transitionDelay: visible ? `${800 + i * 150}ms` : '0ms' }}
           >
-            <span className="text-2xl mb-3 block">{s.icon}</span>
+            <span className="text-2xl mb-3 block transition-transform duration-300 group-hover:scale-125 group-hover:-rotate-12">{s.icon}</span>
             <h3 className="font-mono text-sm font-bold text-white mb-1">{s.title}</h3>
             <p className="text-zinc-400 text-xs leading-relaxed">{s.desc}</p>
           </div>
@@ -111,7 +145,9 @@ export default function AutomationSection() {
       </div>
 
       {/* CTA */}
-      <div className="border border-green/15 rounded-lg bg-surface p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div className={`border border-green/15 rounded-lg bg-surface p-6 flex flex-col sm:flex-row items-center justify-between gap-4 transition-all duration-700 ${
+        visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+      }`} style={{ transitionDelay: visible ? '1400ms' : '0ms' }}>
         <div>
           <p className="font-mono text-sm text-white font-bold">
             ¿Tienes un proceso que quieres automatizar?
@@ -122,7 +158,7 @@ export default function AutomationSection() {
         </div>
         <a
           href="#contacto"
-          className="font-mono text-sm px-5 py-3 rounded-lg border border-green bg-green/10 text-green hover:bg-green/20 transition-colors whitespace-nowrap"
+          className="font-mono text-sm px-5 py-3 rounded-lg border border-green bg-green/10 text-green hover:bg-green/20 hover:shadow-[0_0_20px_rgba(56,216,78,0.25)] transition-all duration-300 whitespace-nowrap"
         >
           Solicitar evaluación →
         </a>

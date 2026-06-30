@@ -47,3 +47,28 @@ body {
 .animate-bar {
   animation: bar-fill 1s ease-out forwards;
 }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes pulseWidth {
+  0%, 100% { opacity: 0.3; width: 16px; }
+  50%      { opacity: 1;   width: 28px; }
+}
+
+@keyframes pulseHeight {
+  0%, 100% { opacity: 0.3; height: 12px; }
+  50%      { opacity: 1;   height: 20px; }
+}
+
+@keyframes flowArrow {
+  0%, 100% { opacity: 0.3; transform: translateX(0); }
+  50%      { opacity: 1;   transform: translateX(3px); }
+}
