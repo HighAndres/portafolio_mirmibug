@@ -21,3 +21,24 @@ export interface StackItem {
   name: string
   level: number
 }
+
+export interface FlowStep {
+  icon: string
+  label: string
+  detail: string
+}
+
+export interface AutomationFlow {
+  id: string
+  title: string
+  trigger: string
+  steps: FlowStep[]
+  result: string
+  tags: string[]
+}
+
+export interface AutomationService {
+  icon: string
+  title: string
+  desc: string
+}

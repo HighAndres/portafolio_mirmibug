@@ -3,8 +3,9 @@ import GreenDot from '@/components/ui/GreenDot'
 
 const links = [
   { href: '/#proyectos', label: 'proyectos' },
-  { href: '/#stack',     label: 'stack' },
-  { href: '/#agente',    label: 'agente' },
+  { href: '/#stack',           label: 'stack' },
+  { href: '/#automatizacion', label: 'automatización' },
+  { href: '/#agente',          label: 'agente' },
   { href: '/#contacto',  label: 'contacto' },
 ]
 

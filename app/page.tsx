@@ -8,6 +8,7 @@ import SecuritySection from '@/components/sections/SecuritySection'
 import AgentSection from '@/components/sections/AgentSection'
 import BotArchitectureSection from '@/components/sections/BotArchitectureSection'
 import StackSection from '@/components/sections/StackSection'
+import AutomationSection from '@/components/sections/AutomationSection'
 import ContactSection from '@/components/sections/ContactSection'
 
 export default function Home() {
@@ -26,6 +27,8 @@ export default function Home() {
         <SecuritySection />
         <div className="border-t border-green/5" />
         <StackSection />
+        <div className="border-t border-green/5" />
+        <AutomationSection />
         <div className="border-t border-green/5" />
         <AgentSection />
         <div className="border-t border-green/5" />
