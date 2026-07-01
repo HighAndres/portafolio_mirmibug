@@ -1,21 +1,36 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { automationFlows, automationServices } from '@/data/automations'
 import Tag from '@/components/ui/Tag'
 import GreenDot from '@/components/ui/GreenDot'
+
+const ROTATE_INTERVAL = 30_000
 
 export default function AutomationSection() {
   const [activeFlow, setActiveFlow] = useState(0)
   const [animKey, setAnimKey] = useState(0)
   const [visible, setVisible] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
   const flow = automationFlows[activeFlow]
+
+  const advance = useCallback(() => {
+    setActiveFlow((prev) => (prev + 1) % automationFlows.length)
+    setAnimKey((k) => k + 1)
+  }, [])
 
   function switchFlow(i: number) {
     setActiveFlow(i)
     setAnimKey((k) => k + 1)
+    if (timerRef.current) clearInterval(timerRef.current)
+    timerRef.current = setInterval(advance, ROTATE_INTERVAL)
   }
+
+  useEffect(() => {
+    timerRef.current = setInterval(advance, ROTATE_INTERVAL)
+    return () => { if (timerRef.current) clearInterval(timerRef.current) }
+  }, [advance])
 
   useEffect(() => {
     const el = sectionRef.current
