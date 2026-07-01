@@ -9,4 +9,5 @@ export const stack: StackItem[] = [
   { name: 'n8n',           level: 88 },
   { name: 'Nginx / VPS',   level: 80 },
   { name: 'Groq / LLM',    level: 72 },
+  { name: 'OpenClaw',       level: 70 },
 ]
